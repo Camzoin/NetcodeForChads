@@ -29,9 +29,9 @@ public class StartNetwork : MonoBehaviour
 
     public void StartClient()
     {
-        UnityTransport unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+        //UnityTransport unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
 
-        unityTransport.SetConnectionData(ip, 7777);
+        //unityTransport.SetConnectionData(ip, 7777);
 
         NetworkManager.Singleton.StartClient();
     }
