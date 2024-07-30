@@ -92,6 +92,9 @@ MonoBehaviour:
   moveSpeed: 20
   acceleration: 3
   runMoveSpeedMulti: 2
+  cameraTrackingSpeed: 5
+  playerAttackProj: {fileID: 4651254411797201030, guid: 28b57e34f4f757f4993857b152f9e590,
+    type: 3}
 --- !u!114 &-1681233539032404538
 MonoBehaviour:
   m_ObjectHideFlags: 0
