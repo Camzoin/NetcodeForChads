@@ -13,6 +13,11 @@ public class PlayerController : NetworkBehaviour
     private bool isRunning = false;
     public float cameraTrackingSpeed = 5;
     public GameObject playerAttackProj;
+    public float timeToShoot = 0.2f, curTimeToShoot = 0;
+    public bool isShooting = false;
+
+
+    private Plane plane = new Plane(Vector3.down, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +28,42 @@ public class PlayerController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return;
+
         input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         if (Input.GetMouseButton(0))
         {
             //fire
+            isShooting = true;
 
-            SpawnBulletServerRPC(transform.position + Vector3.up, transform.rotation);
+            Vector3 lookPos = Vector3.zero;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (plane.Raycast(ray, out float distance))
+            {
+                lookPos = ray.GetPoint(distance);
+            }
+
+
+            transform.LookAt(lookPos);
+
+            if (curTimeToShoot <= 0)
+            {
+                SpawnBulletServerRPC(transform.position + Vector3.up, transform.rotation);
+
+                curTimeToShoot += timeToShoot;
+            }
+
+            if (curTimeToShoot > 0)
+            {
+                curTimeToShoot -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            isShooting = false;
         }
     }
 
@@ -84,8 +118,11 @@ public class PlayerController : NetworkBehaviour
 
 
         
+        if (isShooting == false)
+        {
+            transform.LookAt(transform.position + input);
+        }
 
-        transform.LookAt(transform.position + input);
 
         //Debug.Log(NetworkManager.Singleton.NetworkConfig.NetworkTransport.GetCurrentRtt(NetworkManager.Singleton.NetworkConfig.NetworkTransport.ServerClientId));
 

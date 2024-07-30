@@ -37,6 +37,10 @@ public class Projectile : NetworkBehaviour
         {
             //Debug.DrawRay(transform.position + Vector3.up, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Proj hit");
+
+            transform.position = hit.point;
+
+            Destroy(gameObject);
         }
 
     }
