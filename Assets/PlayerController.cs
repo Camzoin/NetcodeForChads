@@ -51,7 +51,9 @@ public class PlayerController : NetworkBehaviour
 
             if (curTimeToShoot <= 0)
             {
-                SpawnBulletServerRPC(transform.position + Vector3.up, transform.rotation);
+                //SpawnBulletServerRPC(transform.position + Vector3.up, transform.rotation);
+
+                GameObject newBullet = Instantiate(playerAttackProj, transform.position + Vector3.up, transform.rotation);
 
                 curTimeToShoot += timeToShoot;
             }
@@ -147,6 +149,8 @@ public class PlayerController : NetworkBehaviour
     {
         GameObject newBullet = Instantiate(playerAttackProj, position, rotation);
 
-        newBullet.GetComponent<NetworkObject>().Spawn();
+        newBullet.GetComponent<NetworkObject>().SpawnWithOwnership(NetworkManager.Singleton.LocalClientId);
     }
+
+
 }

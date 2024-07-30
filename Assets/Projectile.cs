@@ -7,6 +7,7 @@ public class Projectile : NetworkBehaviour
 {
     public float speed = 5;
     public float damage = 5;
+    public float maxLifetime = 1, curLifetime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,18 @@ public class Projectile : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        curLifetime += Time.deltaTime;
+
+        if (curLifetime > maxLifetime)
+        {
+            DestroyBulletServerRPC();
+        }
     }
 
     private void FixedUpdate()
     {
+        //if (!IsOwner) return;
+
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
 
         // Bit shift the index of the layer (8) to get a bit mask
@@ -40,7 +48,8 @@ public class Projectile : NetworkBehaviour
 
             transform.position = hit.point;
 
-            DestroyBulletServerRPC();
+            //DestroyBulletServerRPC();
+            Destroy(gameObject);
         }
 
     }

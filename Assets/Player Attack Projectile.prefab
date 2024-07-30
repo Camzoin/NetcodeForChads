@@ -146,7 +146,7 @@ MonoBehaviour:
   UseQuaternionCompression: 0
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
-  Interpolate: 1
+  Interpolate: 0
   SlerpPosition: 0
 --- !u!114 &1371311799938806893
 MonoBehaviour:
@@ -160,8 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eac2e6b673257944a7ea2d32819356a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 40
   damage: 5
+  maxLifetime: 1
+  curLifetime: 0
 --- !u!114 &5933486277068542173
 MonoBehaviour:
   m_ObjectHideFlags: 0
