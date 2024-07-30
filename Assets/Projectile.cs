@@ -40,8 +40,16 @@ public class Projectile : NetworkBehaviour
 
             transform.position = hit.point;
 
-            Destroy(gameObject);
+            DestroyBulletServerRPC();
         }
 
+    }
+
+
+    [ServerRpc]
+    private void DestroyBulletServerRPC()
+    {
+        gameObject.GetComponent<NetworkObject>().Despawn();
+        Destroy(gameObject);
     }
 }
