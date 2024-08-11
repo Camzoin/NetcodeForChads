@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491cc9ed456f4a544acb6fa40ad710e5, type: 3}
+  m_Name: Magic Missile
+  m_EditorClassIdentifier: 
+  abilityID: 0
+  projectileSpeed: 40
+  damage: 5
+  castDelay: 0
+  chargeTime: 0
+  cooldown: 0.2
+  manaCost: 2
+  stamCost: 0
+  timeLookingAfterCast: 0.05
+  abiltiyScale: 1
+  knockBackTime: 0.05
+  knockBackVelocity: 15
+  followPlayer: 0
+  breaksOnContact: 1
+  canBeChannelled: 1
+  impactAnimationSpeed: 0.4
+  abilityDescrption: Magic Missile  XD
+  spellPrefab: {fileID: 4651254411797201030, guid: 28b57e34f4f757f4993857b152f9e590,
+    type: 3}
+  abilityIcon: {fileID: 2800000, guid: 87ced0eae2e866f419313c72a08ea3d9, type: 3}
+  abilityIconMat: {fileID: 0}

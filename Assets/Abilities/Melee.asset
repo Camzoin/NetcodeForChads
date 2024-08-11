@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491cc9ed456f4a544acb6fa40ad710e5, type: 3}
+  m_Name: Melee
+  m_EditorClassIdentifier: 
+  abilityID: 1
+  projectileSpeed: 40
+  damage: 5
+  castDelay: 0
+  chargeTime: 0
+  cooldown: 0.75
+  manaCost: 0
+  stamCost: 1
+  timeLookingAfterCast: 0.35
+  abiltiyScale: 5
+  knockBackTime: 0.1
+  knockBackVelocity: 25
+  followPlayer: 0
+  breaksOnContact: 1
+  canBeChannelled: 1
+  impactAnimationSpeed: 0.4
+  abilityDescrption: Melee, like the game
+  spellPrefab: {fileID: 4651254411797201030, guid: 49a070cd788835743a60701cc2dbb8e1,
+    type: 3}
+  abilityIcon: {fileID: 2800000, guid: 1a0788c193a38474abbbf7d00ffa03e8, type: 3}
+  abilityIconMat: {fileID: 0}

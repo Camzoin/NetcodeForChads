@@ -9,15 +9,19 @@ using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 using TMPro;
+using UnityEditor;
 
 public class TestRelay : MonoBehaviour
 {
     public TMP_InputField joinCodeTextBox;
     public TextMeshProUGUI thisServersCode;
+    public GameObject startGameUI;
 
     // Start is called before the first frame update
     async void Start()
     {
+        startGameUI.SetActive(true);
+
         await UnityServices.InitializeAsync();
 
         AuthenticationService.Instance.SignedIn += () =>
@@ -37,6 +41,8 @@ public class TestRelay : MonoBehaviour
 
             Debug.Log(joinCode);
 
+            EditorGUIUtility.systemCopyBuffer = joinCode;
+
             thisServersCode.text = joinCode;
 
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
@@ -44,6 +50,8 @@ public class TestRelay : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartHost();
+
+            startGameUI.SetActive(false);
         }
         catch(RelayServiceException e){
             Debug.Log(e);
@@ -54,6 +62,8 @@ public class TestRelay : MonoBehaviour
     public async void JoinRelay(string joinCode)
     {
         joinCode = joinCodeTextBox.text;
+
+        thisServersCode.text = joinCode;
 
         try
         {
@@ -66,6 +76,8 @@ public class TestRelay : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartClient();
+
+            startGameUI.SetActive(false);
         }
         catch (RelayServiceException e)
         {
